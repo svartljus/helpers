@@ -1,0 +1,42 @@
+<html>
+	<head>
+		<title></title>
+	</head>
+	<body>
+		<fieldset>
+			<legend>Neopixel Calculator</legend>
+			<a
+				href="https://learn.adafruit.com/adafruit-neopixel-uberguide/powering-neopixels"
+				>https://learn.adafruit.com/adafruit-neopixel-uberguide/powering-neopixels</a
+			>
+			<p>
+				<label for="num_strips">Number of Strips (m)</label>
+				<input id="num_strips" value="1" />
+			</p>
+			<p>
+				<label for="num_pixels">Number of pixels per meter</label>
+				<input id="num_pixels" value="60" />
+			</p>
+			<p>
+				<label for="amp_per_pixel">Amperage per pixel (mA)</label>
+				<input id="amp_per_pixel" value="60" />
+			</p>
+			<p>
+				<button onclick="calculatePower()">Calculate power</button>
+			</p>
+			<p>
+				<label for="min_amps">Minimum Amps required</label>
+				<input id="min_amps" disabled />
+			</p>
+		</fieldset>
+		<script>
+			function calculatePower() {
+				const NUM_STRIPS = document.querySelector('#num_strips').value;
+				const NUM_PIXELS = document.querySelector('#num_pixels').value;
+				const AMP_PER_PIXEL = document.querySelector('#amp_per_pixel').value;
+				document.querySelector('#min_amps').value =
+					(NUM_STRIPS * NUM_PIXELS * AMP_PER_PIXEL) / 1000 + 'A';
+			}
+		</script>
+	</body>
+</html>
